@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Registration extends Model
+{
+    use HasFactory;
+
+    protected $guarded = ['id'];
+
+    //Relationship one to many
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
+
+    //Relationship one to many inverse
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
+}
